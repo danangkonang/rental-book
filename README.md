@@ -1,26 +1,38 @@
-# Student Library Scholl
+# Rental Book
 
 ## Requirements
 - go language
 - docker
-- docker compose
+- docker-compose
 
 ## How to running this app
 
-```docker
-docker-compose up --build -d
+1. clone project
+
+```sh
+$ git clone https://github.com/danangkonang/rental-book.git
+
+$ cd rental-book
 ```
 
-## Running migration and seeder
+3. build app with docker-compose
 
-We use [gomig](https://github.com/danangkonang/migration-go-cli) to generate migration and seeder
+```docker
+$ docker-compose up --build -d
+```
+
+3. runing migration and seeder inside container
+
+    We use [gomig](https://github.com/danangkonang/migration-go-cli) to generate migration and seeder
 
 ```bash
-docker exec -it golang-api ash
+# need for fist build
 
-./gomig run migration && ./gomig run seeder
+$ docker exec -it golang-api ash
 
-exit
+$ ./gomig run migration && ./gomig run seeder
+
+$ exit
 ```
 
 ## Tes
@@ -29,7 +41,7 @@ exit
 curl http://localhost:9000
 ```
 
-## To this stop
+## To stop this app
 ```docker
 docker-compose down
 ```
