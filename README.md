@@ -39,7 +39,9 @@ $ exit
 
 ```bash
 $ curl http://localhost:9000
+
 ```
+other endpoint you can import this [student-library.postman_collection.json](https://raw.githubusercontent.com/danangkonang/rental-book/master/student-library.postman_collection.json) file to yaur postman
 
 ## To stop this app
 ```docker
