@@ -38,10 +38,10 @@ $ exit
 ## Tes
 
 ```bash
-curl http://localhost:9000
+$ curl http://localhost:9000
 ```
 
 ## To stop this app
 ```docker
-docker-compose down
+$ docker-compose down
 ```
