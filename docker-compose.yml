@@ -1,0 +1,34 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:9.6.21-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=default
+      - TZ=Asia/Jakarta
+    ports:
+      - "9001:5432"
+    networks:
+      - backend
+    volumes:
+      - pg-book:/var/lib/postgresql/data
+    container_name: postgres-db
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+    - "9000:9000"
+    depends_on: 
+      - db
+    networks:
+      - backend
+    container_name: golang-api
+
+networks:
+  backend:
+
+volumes:
+  pg-book:
