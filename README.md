@@ -23,7 +23,7 @@ $ docker-compose up --build -d
 
 3. runing migration and seeder inside container
 
-    We use [gomig](https://github.com/danangkonang/migration-go-cli) to generate migration and seeder
+    We use [gomig](https://github.com/danangkonang/gomigrator) to generate migration and seeder
 
 ```bash
 # need for fist build
