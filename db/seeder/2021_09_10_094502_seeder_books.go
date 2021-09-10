@@ -9,6 +9,7 @@ import (
 )
 
 func (s *Seeder) Books() {
+	start := time.Now()
 	query := `
 		INSERT INTO
 			books (book_name, max_rental_days, penalty_per_day, is_available, created_at, updated_at)
@@ -20,8 +21,8 @@ func (s *Seeder) Books() {
 			($25, $26, $27, $28, $29, $30),
 			($31, $32, $33, $34, $35, $36)
 	`
-	_, err := migration.Connection().Db.Exec(
-		query,
+	stmt, _ := migration.Connection().Db.Prepare(query)
+	_, err := stmt.Exec(
 		"komik doraemon", 3, 5000, false, time.Now(), time.Now(),
 		"kamus bahasa indonesia", 3, 5000, false, time.Now(), time.Now(),
 		"pengusaha sukses", 3, 5000, false, time.Now(), time.Now(),
@@ -33,5 +34,6 @@ func (s *Seeder) Books() {
 		fmt.Println(err.Error())
 		os.Exit(0)
 	}
-	fmt.Println("success insert table 2021_08_07_073529_seeder_books.go")
+	duration := time.Since(start)
+	fmt.Println("insert table 2021_09_10_094502_seeder_books.go", string(migration.Green), "success", string(migration.Reset), "in", fmt.Sprintf("%.2f", duration.Seconds()), "second")
 }

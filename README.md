@@ -23,14 +23,14 @@ $ docker-compose up --build -d
 
 3. runing migration and seeder inside container
 
-    We use [gomig](https://github.com/danangkonang/gomigrator) to generate migration and seeder
+    We use [gomigrator](https://github.com/danangkonang/gomigrator) to generate migration and seeder
 
 ```bash
 # need for fist build
 
 $ docker exec -it golang-api ash
 
-$ ./gomig run migration && ./gomig run seeder
+$ ./gomigrator run migration && ./gomigrator run seeder
 
 $ exit
 ```

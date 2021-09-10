@@ -9,7 +9,12 @@ import (
 	"github.com/danangkonang/rental-book/router"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
+	"github.com/joho/godotenv"
 )
+
+func init() {
+	godotenv.Load()
+}
 
 func main() {
 

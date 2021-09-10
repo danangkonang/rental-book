@@ -6,7 +6,7 @@ import (
 )
 
 func (m *Migration) Transactions() {
-	_, err := Connection().Db.Exec(`
+	query := `
 		CREATE TABLE transactions(
 			id serial PRIMARY KEY,
 			user_id INTEGER NOT NULL,
@@ -17,11 +17,12 @@ func (m *Migration) Transactions() {
 			returned BOOLEAN DEFAULT FALSE,
 			created_at TIMESTAMP NULL,
 			updated_at TIMESTAMP NULL
-		);
-	`)
+		)
+	`
+	_, err := Connection().Db.Exec(query)
 	if err != nil {
 		fmt.Println(err.Error())
 		os.Exit(0)
 	}
-	fmt.Println("success create table 2021_08_07_073506_migration_transactions.go")
+	fmt.Println(string(Green), "success", string(Reset), "create table 2021_09_10_094326_migration_transactions.go")
 }
